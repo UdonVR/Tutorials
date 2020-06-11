@@ -33,7 +33,7 @@ public class OverrideList : UdonSharpBehaviour
     }
 
     /*
-     * 
+     * Player join / leave
      */
     public override void OnPlayerJoined(VRCPlayerApi player)
     {
@@ -45,6 +45,19 @@ public class OverrideList : UdonSharpBehaviour
     {
         //runs when a player leaves
         //Returns that player that left
+    }
+
+    /*
+     * Stations
+     * These are what chairs use to work
+     */
+    public override void OnStationEntered()
+    {
+        //Runs when you enter a chair
+    }
+    public override void OnStationExited()
+    {
+        //Runs when you leave a chair
     }
 
 }
