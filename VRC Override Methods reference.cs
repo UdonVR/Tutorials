@@ -1,3 +1,4 @@
+using NUnit.Framework.Interfaces;
 using UdonSharp;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,9 +7,26 @@ using VRC.Udon;
 
 public class OverrideList : UdonSharpBehaviour
 {
+    //
+    // More info
+    // https://docs.vrchat.com/docs/event-nodes#onspawn
+    //
     public override void Interact()
     {
         // runs when you Interact with an object
+    }
+
+    public override void OnSpawn()
+    {
+        //Runs when you spawn an object
+    }
+
+    public override void OnOwnershipTransferred()
+    {
+        //Runs when this object changes owners
+        //
+        //Extra note:
+        //Picking up an object transfers ownership
     }
 
     /*
@@ -59,5 +77,4 @@ public class OverrideList : UdonSharpBehaviour
     {
         //Runs when you leave a chair
     }
-
 }
