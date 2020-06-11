@@ -77,4 +77,52 @@ public class OverrideList : UdonSharpBehaviour
     {
         //Runs when you leave a chair
     }
+
+    /*
+     * Video Player
+     * 
+     * There currently isnt a video player for Udon
+     * so none of these will work
+     * however they're still included with Udon
+     * 
+     * When they bring the video player back
+     * these will have to be attached to an
+     * object with the video Sync component
+     */
+    public override void OnVideoEnd()
+    {
+        //When a video ends
+    }
+    public override void OnVideoPause()
+    {
+        //When a video pauses
+    }
+    public override void OnVideoPlay()
+    {
+        //When a start playing vis any source
+        //First starting a video
+        //UnPausing
+        //Next video in que
+    }
+    public override void OnVideoStart()
+    {
+        //When a video player starts from a stopped state
+    }
+
+    /*
+     * Serialization
+     * 
+     * This is something network related i never dug into
+     * i know there are uses for them,
+     * but i dont know how to use them
+     */
+    public override void OnDeserialization()
+    {
+        
+    }
+    public override void OnPreSerialization()
+    {
+        
+    }
+
 }
