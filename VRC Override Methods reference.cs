@@ -88,6 +88,7 @@ public class OverrideList : UdonSharpBehaviour
     }
     public override void OnPlayerTriggerEnter(VRCPlayerApi player)
     {
+        //This has to be attached to a GameObject with a trigger collider on it
         //if a player has multiple colliders on their avatar, this will run once for each collider they have.
 
         //Runs whan any player enters a Trigger.
@@ -95,6 +96,7 @@ public class OverrideList : UdonSharpBehaviour
     }
     public override void OnPlayerTriggerExit(VRCPlayerApi player)
     {
+        //This has to be attached to a GameObject with a trigger collider on it
         //if a player has multiple colliders on their avatar, this will run once for each collider they have.
 
         //Runs whan any player Exits a Trigger.
@@ -103,6 +105,7 @@ public class OverrideList : UdonSharpBehaviour
     }
     public override void OnPlayerTriggerStay(VRCPlayerApi player)
     {
+        //This has to be attached to a GameObject with a trigger collider on it
         //if a player has multiple colliders on their avatar, this will run once for each collider they have.
 
         //Runs on every frame whan a player is inside of a Trigger.
@@ -110,6 +113,7 @@ public class OverrideList : UdonSharpBehaviour
 
     public override void OnPlayerCollisionEnter(VRCPlayerApi player)
     {
+        //This has to be attached to a GameObject with a collider on it
         //if a player has multiple colliders on their avatar, this will run once for each collider they have.
 
         //Runs whan any player enters a Collider.
@@ -117,6 +121,7 @@ public class OverrideList : UdonSharpBehaviour
     }
     public override void OnPlayerCollisionExit(VRCPlayerApi player)
     {
+        //This has to be attached to a GameObject with a collider on it
         //if a player has multiple colliders on their avatar, this will run once for each collider they have.
 
         //Runs whan any player Exits a Collider.
@@ -125,6 +130,7 @@ public class OverrideList : UdonSharpBehaviour
     }
     public override void OnPlayerCollisionStay(VRCPlayerApi player)
     {
+        //This has to be attached to a GameObject with a collider on it
         //if a player has multiple colliders on their avatar, this will run once for each collider they have.
 
         //Runs on every frame whan a player is inside of a Trigger.
