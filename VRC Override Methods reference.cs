@@ -7,7 +7,7 @@ public class OverrideList : UdonSharpBehaviour
 {
     //
     // More info
-    // https://docs.vrchat.com/docs/event-nodes#onspawn
+    // https://docs.vrchat.com/docs/event-nodes
     //
     public override void Interact()
     {
@@ -60,7 +60,7 @@ public class OverrideList : UdonSharpBehaviour
     }
 
     /*
-     * Player join / leave
+     * Player Events
      */
     public override void OnPlayerJoined(VRCPlayerApi _player)
     {
@@ -72,6 +72,62 @@ public class OverrideList : UdonSharpBehaviour
     {
         //runs when a player leaves
         //Returns that player that left
+    }
+    public override void OnPlayerRespawn(VRCPlayerApi player)
+    {
+        //Runs when a player respawns
+        //this may run for EVERYONE when somone respawns
+        //will be tested and updated at a later date
+    }
+    public override void OnPlayerParticleCollision(VRCPlayerApi player)
+    {
+        //This has to be added to a Particle System to run
+
+        //When a Particle with collision from the Particle System hits a player, this runs.
+        //This only triggers for the local player that gets hit due to player particle collision being local only.
+    }
+    public override void OnPlayerTriggerEnter(VRCPlayerApi player)
+    {
+        //if a player has multiple colliders on their avatar, this will run once for each collider they have.
+
+        //Runs whan any player enters a Trigger.
+        //If a client doesnt have the trigger enabled, it will not run.
+    }
+    public override void OnPlayerTriggerExit(VRCPlayerApi player)
+    {
+        //if a player has multiple colliders on their avatar, this will run once for each collider they have.
+
+        //Runs whan any player Exits a Trigger.
+        //If a client doesnt have the Trigger enabled, it will not run.
+        //This will still call if the Trigger gets turned off when the client is inside of it.
+    }
+    public override void OnPlayerTriggerStay(VRCPlayerApi player)
+    {
+        //if a player has multiple colliders on their avatar, this will run once for each collider they have.
+
+        //Runs on every frame whan a player is inside of a Trigger.
+    }
+
+    public override void OnPlayerCollisionEnter(VRCPlayerApi player)
+    {
+        //if a player has multiple colliders on their avatar, this will run once for each collider they have.
+
+        //Runs whan any player enters a Collider.
+        //If a client doesnt have the Collider enabled, it will not run.
+    }
+    public override void OnPlayerCollisionExit(VRCPlayerApi player)
+    {
+        //if a player has multiple colliders on their avatar, this will run once for each collider they have.
+
+        //Runs whan any player Exits a Collider.
+        //If a client doesnt have the Collider enabled, it will not run.
+        //This will still call if the Collider gets turned off when the client is inside of it.
+    }
+    public override void OnPlayerCollisionStay(VRCPlayerApi player)
+    {
+        //if a player has multiple colliders on their avatar, this will run once for each collider they have.
+
+        //Runs on every frame whan a player is inside of a Trigger.
     }
 
     /*
