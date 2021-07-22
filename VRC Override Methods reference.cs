@@ -1,9 +1,7 @@
-using NUnit.Framework.Interfaces;
 using UdonSharp;
-using UnityEngine;
-using UnityEngine.UI;
+using VRC.SDK3.Components.Video;
 using VRC.SDKBase;
-using VRC.Udon;
+using VRC.Udon.Common;
 
 public class OverrideList : UdonSharpBehaviour
 {
@@ -21,12 +19,23 @@ public class OverrideList : UdonSharpBehaviour
         //Runs when you spawn an object
     }
 
-    public override void OnOwnershipTransferred()
+    /*
+     * Overship transfers
+     */
+    public override void OnOwnershipTransferred(VRCPlayerApi _player)
     {
         //Runs when this object changes owners
         //
         //Extra note:
         //Picking up an object transfers ownership
+    }
+    public override bool OnOwnershipRequest(VRCPlayerApi _requestingPlayer, VRCPlayerApi _currentOwner)
+    {
+        //When an object tries to transfer Ownship
+        //this will run allowing you to define if ownership is allowed to transfer.
+        //
+        //If this isnt present in your code it will retruen True by default allowing the owner to change.
+        return true;
     }
 
     /*
@@ -53,13 +62,13 @@ public class OverrideList : UdonSharpBehaviour
     /*
      * Player join / leave
      */
-    public override void OnPlayerJoined(VRCPlayerApi player)
+    public override void OnPlayerJoined(VRCPlayerApi _player)
     {
         //Runs when a player joins
         //Returns that player that joined
     }
 
-    public override void OnPlayerLeft(VRCPlayerApi player)
+    public override void OnPlayerLeft(VRCPlayerApi _player)
     {
         //runs when a player leaves
         //Returns that player that left
@@ -69,11 +78,11 @@ public class OverrideList : UdonSharpBehaviour
      * Stations
      * These are what chairs use to work
      */
-    public override void OnStationEntered()
+    public override void OnStationEntered(VRCPlayerApi _player)
     {
         //Runs when you enter a chair
     }
-    public override void OnStationExited()
+    public override void OnStationExited(VRCPlayerApi _player)
     {
         //Runs when you leave a chair
     }
@@ -81,13 +90,7 @@ public class OverrideList : UdonSharpBehaviour
     /*
      * Video Player
      * 
-     * There currently isnt a video player for Udon
-     * so none of these will work
-     * however they're still included with Udon
-     * 
-     * When they bring the video player back
-     * these will have to be attached to an
-     * object with the video Sync component
+     * These need to be on an VideoPlayer component to work
      */
     public override void OnVideoEnd()
     {
@@ -99,30 +102,60 @@ public class OverrideList : UdonSharpBehaviour
     }
     public override void OnVideoPlay()
     {
-        //When a start playing vis any source
-        //First starting a video
-        //UnPausing
-        //Next video in que
+        //When a video starts playing, this can include:
+        //Video first starts
+        //UnPausing a video
     }
     public override void OnVideoStart()
     {
-        //When a video player starts from a stopped state
+        //Runs when a video player starts from a stopped state.
+        //seems to be the same as OnVideoPlay()
     }
-
+    public override void OnVideoLoop()
+    {
+        //Runs when a video loops
+    }
+    public override void OnVideoReady()
+    {
+        //Runs when a video loads in and is ready to be played, but not when the video plays.
+    }
+    public override void OnVideoError(VideoError videoError)
+    {
+        //Requires "using VRC.SDK3.Components.Video;" to be used
+    }
     /*
      * Serialization
-     * 
-     * This is something network related i never dug into
-     * i know there are uses for them,
-     * but i dont know how to use them
      */
     public override void OnDeserialization()
     {
-        
+        //This runs whenever the client recives Networking data.
     }
     public override void OnPreSerialization()
     {
-        
+        //This runs before the client sends Networking data.
+    }
+    public override void OnPostSerialization(SerializationResult result)
+    {
+        //requires "using VRC.Udon.Common;" to use
+
+        //From what i understand this
+        //runs after all other Serialization event and allows you top check if it was sent successfully.
     }
 
+    /*
+     * MIDI
+     */
+    public override void MidiControlChange(int channel, int number, int value)
+    {
+        //Runs when a Control changes on the MIDI controller. this basically anything that isnt a note
+        //Examples beiong a slider, a knob, or a sustain pedal
+    }
+    public override void MidiNoteOn(int channel, int number, int velocity)
+    {
+        //Runs when you push a MIDI note
+    }
+    public override void MidiNoteOff(int channel, int number, int velocity)
+    {
+        //Runs when you let go of a MIDI note
+    }
 }
