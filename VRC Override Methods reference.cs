@@ -129,6 +129,10 @@ public class OverrideList : UdonSharpBehaviour
 
         //Runs on every frame whan a player is inside of a Trigger.
     }
+    public override void PostLateUpdate()
+    {
+        //runs every frane after the IK is calculated
+    }
 
     /*
      * Stations
