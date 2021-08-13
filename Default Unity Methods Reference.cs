@@ -11,7 +11,12 @@ public class MethodList : MonoBehaviour
 
     private void Update()
     {
-        //Runs every frame
+        //Runs at the start of every frame
+    }
+    private void LateUpdate()
+    {
+        //Runs every frame after Update.
+        //This is useful to use if you have items tracking the player or other objects.
     }
 
     private void OnEnable()
